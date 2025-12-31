@@ -1,13 +1,18 @@
-import dotenv from "dotenv";
 import app from "./app.js";
-import connectDB from "./config/db.js";
-
+import db from "./models/index.js";
+import dotenv from "dotenv";
 dotenv.config();
+const DB_PORT = process.env.DB_PORT || 5000;
 
-const PORT = process.env.PORT || 5000;
 
-connectDB();
+db.sequelize.authenticate()
+  .then(() => console.log("MySQL authenticated"))
+  .catch(err => console.error("DB error:", err));
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+
+db.sequelize.sync().then(() => {
+  console.log("Database connected");
+  app.listen(DB_PORT, () => {
+    console.log(`Server running on DB_PORT ${DB_PORT}`);
+  });
 });
