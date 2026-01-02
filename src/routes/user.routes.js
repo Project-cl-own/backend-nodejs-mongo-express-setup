@@ -15,6 +15,31 @@ router.post(
   validate(userValidation.loginValidation),
   userController.login
 );
+router.post(
+  "/send-otp",
+  validate(userValidation.sendOtpSchema),
+  userController.sendOtp
+);    
+
+router.post(
+  "/verify-otp",
+  validate(userValidation.verifyOtpSchema),
+  userController.verifyOtp
+);
+
+router.post(
+  "/forgot-password",
+  validate(userValidation.forgotPasswordSchema),
+  userController.forgotPassword
+);
+
+router.post(
+  "/change-password",
+  validate(userValidation.changePasswordSchema),
+  userController.changePassword
+);
+
+
 
 
 export default router;
