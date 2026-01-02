@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Category & SubCategory API",
+    "_postman_id": "b3e4b840-8a2a-4d6c-9c90-123456789abc",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000/api/v1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Category",
+      "item": [
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "category_name", "value": "Electronics", "type": "text" },
+                { "key": "category_image", "type": "file" }
+              ]
+            },
+            "url": { "raw": "{{base_url}}/categories", "host": ["{{base_url}}"], "path": ["categories"] }
+          }
+        },
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/categories", "host": ["{{base_url}}"], "path": ["categories"] }
+          }
+        },
+        {
+          "name": "Get Category By ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/categories/1", "host": ["{{base_url}}"], "path": ["categories", "1"] }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PUT",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "category_name", "value": "Updated Electronics", "type": "text" },
+                { "key": "category_image", "type": "file" }
+              ]
+            },
+            "url": { "raw": "{{base_url}}/categories/1", "host": ["{{base_url}}"], "path": ["categories", "1"] }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{base_url}}/categories/1", "host": ["{{base_url}}"], "path": ["categories", "1"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SubCategory",
+      "item": [
+        {
+          "name": "Create SubCategory",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "category_id", "value": "1", "type": "text" },
+                { "key": "subcategory_name", "value": "Mobile Phones", "type": "text" },
+                { "key": "subcategory_image", "type": "file" }
+              ]
+            },
+            "url": { "raw": "{{base_url}}/subcategories", "host": ["{{base_url}}"], "path": ["subcategories"] }
+          }
+        },
+        {
+          "name": "Get SubCategories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{base_url}}/subcategories", "host": ["{{base_url}}"], "path": ["subcategories"] }
+          }
+        },
+        {
+          "name": "Get SubCategories By Category",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/subcategories/category/1",
+              "host": ["{{base_url}}"],
+              "path": ["subcategories", "category", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update SubCategory",
+          "request": {
+            "method": "PUT",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "subcategory_name", "value": "Smartphones", "type": "text" },
+                { "key": "subcategory_image", "type": "file" }
+              ]
+            },
+            "url": { "raw": "{{base_url}}/subcategories/1", "host": ["{{base_url}}"], "path": ["subcategories", "1"] }
+          }
+        },
+        {
+          "name": "Delete SubCategory",
+          "request": {
+            "method": "DELETE",
+            "url": { "raw": "{{base_url}}/subcategories/1", "host": ["{{base_url}}"], "path": ["subcategories", "1"] }
+          }
+        }
+      ]
+    }
+  ]
+}

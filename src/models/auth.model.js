@@ -1,33 +1,46 @@
-import mongoose from "mongoose";
+const AuthModel = (sequelize, DataTypes) => {
+  const User = sequelize.define(
+    "User",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
 
-const userSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
-      trim: true
+      user_code: {
+        type: DataTypes.STRING,
+        unique: true,
+      },
+
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
+      role: {
+        type: DataTypes.ENUM("USER", "DRIVER", "ADMIN"),
+        allowNull: false,
+      },
     },
-
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true
-    },
-
-    password: {
-      type: String,
-      required: true
-    },
-
-    isActive: {
-      type: Boolean,
-      default: true
+    {
+      tableName: "users",
+      timestamps: true,
     }
-  },
-  { timestamps: true }
-);
+  );
 
-const User = mongoose.model("User", userSchema);
-export default User;
+  return User;
+};
+
+export default AuthModel;

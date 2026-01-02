@@ -3,6 +3,7 @@ import Sequelize from "sequelize";
 import config from "../config/db.js";
 import CategoryModel from "./category.model.js";
 import subcategoryModel from "./subcategory.model.js";
+import auth from "./auth.model.js";
 
 const sequelize = config.sequelize;
 const db = {};
@@ -11,6 +12,7 @@ db.sequelize = sequelize;
 
 db.Category = CategoryModel(sequelize, Sequelize.DataTypes);
 db.SubCategory = subcategoryModel(sequelize, Sequelize.DataTypes);
+db.auth =  auth(sequelize, Sequelize.DataTypes);
 
 db.Category.hasMany(db.SubCategory, {
   foreignKey: "category_id",

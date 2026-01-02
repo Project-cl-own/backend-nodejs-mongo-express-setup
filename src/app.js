@@ -13,8 +13,8 @@ app.use(morgan("dev"));
 app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth/v1", userRoutes);
-app.use("/api/categories/v1", (await import("./routes/category.routes.js")).default);
-app.use("/api/subcategories/v1", (await import("./routes/subcategory.routes.js")).default);
+app.use("/api/v1", (await import("./routes/category.routes.js")).default);
+app.use("/api/v1", (await import("./routes/subcategory.routes.js")).default);
 app.use(errorMiddleware);
 
 export default app;
